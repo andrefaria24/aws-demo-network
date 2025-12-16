@@ -5,9 +5,9 @@ module "vpc" {
   name = "vpc-demo"
   cidr = "10.11.0.0/16"
 
-  azs             = ["${var.AWS_REGION}a", "${var.AWS_REGION}b", "${var.AWS_REGION}c"]
-  private_subnets = ["10.11.1.0/24", "10.11.2.0/24", "10.11.3.0/24"]
-  public_subnets  = ["10.11.11.0/24", "10.11.12.0/24", "10.11.13.0/24"]
+  azs             = ["${var.AWS_REGION}a", "${var.AWS_REGION}b"]
+  private_subnets = ["10.11.1.0/24", "10.11.2.0/24"]
+  public_subnets  = ["10.11.11.0/24", "10.11.12.0/24"]
 
   create_igw         = true
   enable_nat_gateway = false
