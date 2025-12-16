@@ -1,3 +1,4 @@
+# Create a VPC with public and private subnets across two availability zones
 module "vpc" {
   source  = "app.terraform.io/acfaria-hashicorp/vpc/aws"
   version = "1.0.0"
@@ -17,4 +18,12 @@ module "vpc" {
     Terraform   = "true"
     Environment = "demo"
   }
+}
+
+# Create routes in private route tables to direct internet-bound traffic to the IGW
+resource "aws_route" "private_default_to_igw" {
+  for_each               = toset(module.vpc.private_route_table_ids)
+  route_table_id         = each.value
+  destination_cidr_block = "0.0.0.0/0"
+  gateway_id             = module.vpc.igw_id
 }
