@@ -13,3 +13,7 @@ output "vpc_cidr" {
 output "pvt_subnet_ids" {
   value = module.vpc.private_subnets
 }
+
+output "pvt_rt_ids" {
+  value = module.vpc.private_route_table_ids
+}
