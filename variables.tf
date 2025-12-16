@@ -11,7 +11,3 @@ variable "AWS_TAGS" {
     "Environment" = "demo"
   }
 }
-
-variable "TFE_ORG_NAME" {
-  type = string
-}
