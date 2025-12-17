@@ -19,3 +19,8 @@ module "vpc" {
     Environment = "demo"
   }
 }
+
+# Create an EC2 Instance Connect Endpoint
+resource "aws_ec2_instance_connect_endpoint" "default" {
+  subnet_id = module.vpc.private_subnets[0]
+}
