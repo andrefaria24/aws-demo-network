@@ -11,7 +11,7 @@ module "vpc" {
   public_subnets  = ["10.11.11.0/24", "10.11.12.0/24"]
 
   create_igw         = true
-  enable_nat_gateway = false
+  enable_nat_gateway = true
   enable_vpn_gateway = false
 
   tags = {
@@ -21,9 +21,9 @@ module "vpc" {
 }
 
 # Create routes in private route tables to direct internet-bound traffic to the IGW
-resource "aws_route" "private_default_to_igw" {
-  for_each               = toset(module.vpc.private_route_table_ids)
-  route_table_id         = each.value
-  destination_cidr_block = "0.0.0.0/0"
-  gateway_id             = module.vpc.igw_id
-}
+# resource "aws_route" "private_default_to_igw" {
+#   for_each               = toset(module.vpc.private_route_table_ids)
+#   route_table_id         = each.value
+#   destination_cidr_block = "0.0.0.0/0"
+#   gateway_id             = module.vpc.igw_id
+# }
