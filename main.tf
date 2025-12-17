@@ -12,18 +12,10 @@ module "vpc" {
 
   create_igw         = true
   enable_nat_gateway = true
-  enable_vpn_gateway = false
+  single_nat_gateway = true
 
   tags = {
     Terraform   = "true"
     Environment = "demo"
   }
 }
-
-# Create routes in private route tables to direct internet-bound traffic to the IGW
-# resource "aws_route" "private_default_to_igw" {
-#   for_each               = toset(module.vpc.private_route_table_ids)
-#   route_table_id         = each.value
-#   destination_cidr_block = "0.0.0.0/0"
-#   gateway_id             = module.vpc.igw_id
-# }
