@@ -17,3 +17,11 @@ output "pvt_subnet_ids" {
 output "pvt_rt_ids" {
   value = module.vpc.private_route_table_ids
 }
+
+output "pub_subnet_ids" {
+  value = module.vpc.public_subnets
+}
+
+output "pub_rt_ids" {
+  value = module.vpc.public_route_table_ids
+}
